@@ -10,16 +10,18 @@ Add-on has a web UI | No. This add-on does not contain any views.
 
 The TA-opnsense Add-on allows Splunk data administrators to map the OPNsense firewall events to the [CIM](https://docs.splunk.com/Splexicon:CommonInformationModel) enabling the data to be used with other Splunk Apps, such as Enterprise Security.
 
-```
+```TEXT
 Version 1.3.0
 - Added compatibility for eve syslog format for Suricata events
 ```
 
 Contributors
+
 - [J-C-B](https://github.com/J-C-B)
 - [dgersting](https://github.com/dgersting)
 
-### Where to Install
+## Where to Install
+
 Splunk platform Instance type | Supported | Required | Actions required/ Comments
 ----------------------------- | --------- | -------- | --------------------------
 Search Heads | Yes | Yes | Install this add-on to all search heads
@@ -29,6 +31,7 @@ Heavy Forwarders | Yes | Conditional | Required, if HFs are used to collect this
 \* For more information, see Splunk's [documentation](https://docs.splunk.com/Documentation/AddOns/released/Overview/Installingadd-ons) on installing Add-ons.
 
 ## Input Requirements
+
 Set the sourcetype to "opnsense" in the inputs.conf file on the forwarder.
 
 \* ***See [Installation Walkthrough](#Installation-Walkthrough) for more information***
@@ -125,14 +128,16 @@ Administrator access to the OPNsense Web GUI will be required to perform the fol
 1. Log into the OPNsense firewall.
 1. Navigate to: System > Settings > Logging/targets.
 1. Click the `+` (plus sign) to add a new syslog destination.
-  - Ensure the `Enabled` checkbox is checked.
-  - Transport = UDP(4)
-  - Applications = (Leave Blank) to select everything
-  - Levels = (Leave default setting)
-  - Facilities = (Leave Blank) to select everything
-  - Hostname = FQDN or IP of the syslog server configured in previous steps.
-  - Port = 514
-  - Description = (Optional)
+
+- Ensure the `Enabled` checkbox is checked.
+- Transport = UDP(4)
+- Applications = (Leave Blank) to select everything
+- Levels = (Leave default setting)
+- Facilities = (Leave Blank) to select everything
+- Hostname = FQDN or IP of the syslog server configured in previous steps.
+- Port = 514
+- Description = (Optional)
+
 1. Click Save
 1. Click Apply
 
@@ -156,7 +161,6 @@ sourcetype = opnsense
 
 Push the configuration to the forwarder, if using a deployment server, or restart the UF if configuring on the UF itself.
 
-
 ## Sourcetypes
 
 Below are a list of sourcetypes which this Add-on will automatically identify and do not need to be set manually.
@@ -173,13 +177,13 @@ Source type | Description | CIM Data Models
 `opnsense:squid` | Proxy events from Squid Proxy | [Web](https://docs.splunk.com/Documentation/CIM/latest/User/Web)
 `opnsense:unbound` | DNS events from Unbound DNS | [Network Resolution](https://docs.splunk.com/Documentation/CIM/latest/User/NetworkResolutionDNS)
 
-
 ## Bugs
+
 Please open an issue at [github.com](https://github.com/ZachChristensen28/TA-opnsense)
 
 ## Versions
 
-```
+```TEXT
 Version 1.2.9
 - Added compatibility for new syslog format released in OPNSense v20.7
 - Updated the 'vendor_options' field to be multi-valued
